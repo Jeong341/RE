@@ -1,0 +1,59 @@
+import sys
+import matplotlib.pyplot as plt
+from openpyxl import load_workbook
+province = ['河\n北', '山\n西', '辽\n宁', '吉\n林',  '黑\n龙\n江', '江\n苏', '浙\n江', '安\n徽', '福\n建', '江\n西', '山\n东',
+            '河\n南', '湖\n北', '湖\n南', '广\n东', '海\n南', '四\n川', '贵\n州', '云\n南', '陕\n西', '甘\n肃', '青\n海', '台\n湾', '内\n蒙\n古',
+            '广\n西', '西\n藏', '宁\n夏', '新\n疆', '北\n京', '天\n津', '上\n海', '重\n庆', '香\n港', '澳\n门']
+temp = input('请输入查询日期(****-**-**）:')
+date = temp + '\n'
+workbook_1 = load_workbook('./新增确诊.xlsx')
+workbook_2 = load_workbook('./无症状感染.xlsx')
+active_1 = workbook_1.active
+active_2 = workbook_2.active
+for col in active_1.iter_cols(min_col=2, values_only=True):
+    if col[0] in date:
+        new = col
+        print("查询成功！请稍后")
+        break
+else:
+    print('未找到相应结果')
+    sys.exit()
+for col in active_2.iter_cols(min_col=2, values_only=True):
+    if col[0] in date:
+        wzz = col
+        break
+new = list(new)
+del(new[0])
+wzz = list(wzz)
+del(wzz[0])
+plt.rcParams['font.sans-serif'] = ["SimHei"]
+plt.rcParams["axes.unicode_minus"] = False
+fig, ax = plt.subplots(nrows=2, ncols=1)
+ax[0].bar(province, new)
+ax[0].set_title('新增确诊')
+ax[0].set_ylabel("人数/人")
+index = 0
+for label in ax[0].get_xticklabels():
+    if new[index] >0:
+        ax[0].text(province[index], new[index] + 0.01, "%d" % new[index], ha='center', fontsize=8)
+        index +=1
+        continue
+    label.set_visible(False)
+    index +=1
+
+
+ax[1].bar(province, wzz)
+ax[1].set_title('新增无症状感染者')
+ax[1].set_xlabel('省份')
+ax[1].set_ylabel("人数/人")
+index = 0
+for label in ax[1].get_xticklabels():
+    if wzz[index] >0:
+        ax[1].text(province[index], wzz[index] + 0.01, "%d" % wzz[index], ha='center', fontsize=8)
+        index +=1
+        continue
+    label.set_visible(False)
+    index +=1
+
+plt.tight_layout()
+plt.show()
