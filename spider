@@ -1,0 +1,151 @@
+from bs4 import BeautifulSoup
+import time
+import random
+import re
+import xlwt
+from selenium import webdriver
+riqi = []
+bt_new = []
+province_new = []
+gat_qz = []
+bt_wzz = []
+province_wzz = []
+province = ['河北', '山西', '辽宁', '吉林', '黑龙江', '江苏', '浙江', '安徽', '福建', '江西', '山东', '河南', ' 湖北',
+            '湖南', '广东', '海南', '四川', '贵州', '云南', '陕西', '甘肃', '青海', '内蒙古', '广西', '西藏', '宁夏', '新疆',
+            '北京', '天津', '上海', '重庆']
+def get_html(url):
+    browser = webdriver.Firefox()
+    browser.get(url)
+    html = browser.page_source
+    # print(html)
+    browser.close()
+    return html
+
+def getdata(url):    #爬取每个疫情通报连接的数据
+    html = get_html(url)
+    content = BeautifulSoup(html, "html.parser")
+    list = content.select('.list > .con')
+    while len(list) == 0:  # 若没有得到正常网页，则重复请求
+        html = get_html(url)
+        content = BeautifulSoup(html, "html.parser")
+        list = content.select('.list > .con')
+    for con in list:
+        news = con.get_text()
+    date = re.search('(\d+.\d+.)0—24时',news).group(1) #获取日期
+    # print(date)
+    riqi.append(date)
+    new = re.search('新增确诊病例(.+)本土病例(\d*)例',news)   #获取本土新增
+    if new == None:
+        bt_new.append(0)
+    else:
+        bt_new.append(new)
+    wzz = re.search('新增无症状感染者(.+)本土(\d*)例',news).group(2)  #获取本土无症状
+    # print(wzz)
+    if wzz == None:
+        bt_wzz.append(0)
+    else:
+        bt_wzz.append(wzz)
+    qz = re.search('累计收到港澳台地区通报确诊病例(\d*)例',news).group(1)  #获取港澳台
+    # print(qz)
+    if qz == None:
+        gat_qz.append(0)
+    else:
+        gat_qz.append(qz)
+    for i in province:
+        temp_1 = re.search('新增确诊病例.*?本土病例.*?' + i +'(\d+)', news)  #获取各省份新增
+        if temp_1 == None:
+            province_new.append(0)
+        else:
+            # print(temp_1.group(1))
+            province_new.append(temp_1)
+    for i in province:
+        temp_2 = re.search('新增无症状感染者(.+){}(\d*)'.format(i), news)  #获取各省份无症状
+        if temp_2 == None:
+            # print(0)
+            province_wzz.append(0)
+        else:
+            # print(temp_2.group(2))
+            province_new.append(temp_2.group(2))
+    print(date + '爬取成功！')
+def savedata():
+    workbook = xlwt.Workbook(encoding='utf-8')   #创建workbook对象
+    worksheet_1 = workbook.add_sheet('新增确诊')          #创建工作表
+    worksheet_2 = workbook.add_sheet('新增无症状')
+    worksheet_1.write(0, 0, '日期')  #处理新增确诊数据
+    j=1
+    for i in riqi:
+        worksheet_1.write(j, 0, i)
+        j+=1
+    worksheet_1.write(0, 1, '本土确诊')
+    j=1
+    for i in bt_new:
+        worksheet_1.write(j, 1, i)
+        j+=1
+    worksheet_1.write(0, 2, '港澳台确诊')
+    j=1
+    for i in gat_qz:
+        worksheet_1.write(j, 2, i)
+        j += 1
+    j=3
+    for i in province:
+        worksheet_1.write(0, j, i)
+        j+=1
+    length = len(province_new) // 31
+    k = 0
+    for i in range(1,length+1):
+        for j in range(3,34):
+            worksheet_1.write(i,j,province_new[k])
+            k = k+1
+    worksheet_2.write(0, 0, '日期')     #对无症状数据处理
+    j = 1
+    for i in riqi:
+        worksheet_2.write(j, 0, i)
+        j += 1
+    worksheet_2.write(0, 1, '本土无症状')
+    j = 1
+    for i in bt_wzz:
+        worksheet_2.write(j, 1, i)
+        j += 1
+    worksheet_2.write(0, 2, '港澳台确诊')
+    j = 1
+    for i in gat_qz:
+        worksheet_2.write(j, 2, i)
+        j += 1
+    j = 3
+    for i in province:
+        worksheet_2.write(0, j, i)
+        j += 1
+    k = 0
+    for i in range(1,length+1):
+        for j in range(3,34):
+            worksheet_2.write(i,j,province_wzz[k])
+            k = k+1
+    workbook.save('疫情数据.xls')
+def spider():       #爬取疫情通报链接
+    url = "http://www.nhc.gov.cn/xcs/yqtb/list_gzbd.shtml"
+    html = get_html(url)    #爬取首页含有的链接
+    content = BeautifulSoup(html,"html.parser")
+    list = content.select('.list > ul >li > a')
+    while len(list) == 0:   #若没有得到正常网页，则重复请求
+        html = get_html(url)  # 爬取首页含有的链接
+        content = BeautifulSoup(html, "html.parser")
+        list = content.select('.list > ul >li > a')
+    for i in list:
+        link = "http://www.nhc.gov.cn" + i['href']
+        print(link)
+        getdata(link)   #每爬取一个链接，就对该链接再次进行爬取，获得需要的数据
+    for i in range(2, 42):  #爬取后续页面含有的链接
+        url = "http://www.nhc.gov.cn/xcs/yqtb/list_gzbd_{}.shtml".format(i)
+        html = get_html(url)
+        content = BeautifulSoup(html, "html.parser")
+        list = content.select('.list > ul > li > a')
+        while len(list) == 0:   #若没有得到正常网页，则重复请求
+            html = get_html(url)
+            content = BeautifulSoup(html, "html.parser")
+            list = content.select('.list > ul > li > a')
+        for j in list:
+            link = "http://www.nhc.gov.cn" + j['href']
+            print(link)
+            getdata(link)
+spider()
+savedata()
