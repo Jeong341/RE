@@ -1,0 +1,59 @@
+.body{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.area{
+  position: absolute;
+  width:100vw;
+  height: 120px;
+  background-color: gray;
+  opacity: 0.8;
+  text-align: center;
+}
+.roominput{
+  background-color:honeydew;
+  height:60px;
+  font-size: 20px;
+}
+.enter{
+  position:absolute;
+  width: 60px;
+  height: 60px;
+  background-color:lightcoral;
+  right: 0px;
+  top: 0px;
+  font-size: 20px;
+  text-align: center;
+  line-height: 60px;
+  z-index: 3;
+}
+.getid{
+  position:absolute;
+  width: 120px;
+  height: 60px;
+  background-color:lightcoral;
+  right: 0px;
+  bottom: 0px;
+  font-size: 20px;
+  text-align: center;
+  line-height: 60px;
+  z-index: 999;
+}
+.idshow{
+  position:absolute;
+  height: 60px;
+  width: 100vw;
+  left:0px;
+  bottom: 0px;
+  font-size: 20px;
+  text-align: center;
+  line-height: 60px;
+}
+.return_bnt{
+  position: absolute;
+  width: 30px; 
+  height: 35px;
+  top: 6vh;
+  left: 3vw;
+}

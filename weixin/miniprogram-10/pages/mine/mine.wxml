@@ -1,0 +1,58 @@
+<!--pages/mine/mine.wxml-->
+<view class="body">
+  <!-- 动态背景 -->
+  <view class="Move_background">
+    <view class="square">
+      <view class="Move_1">
+        <view></view>
+        <view></view>
+        <view></view>
+        <view></view>
+        <view></view>
+      </view>
+    </view>
+    <view class="circle">
+      <view class="Move_2">
+        <view></view>
+        <view></view>
+        <view></view>
+        <view></view>
+        <view></view>
+      </view>
+    </view>
+  </view>
+  <!-- 用户资料 -->
+  <view class="User_info">
+    <button class="avatar" open-type="chooseAvatar" bind:chooseavatar="onChooseAvatar">
+      <image src="{{avatarUrl}}"></image>
+    </button>
+    <view class="name">{{user_name}}</view>
+    <view class="ID">ID:{{user_id}}</view>
+    <view class="play">
+      <view class="play_text">场次</view>
+      <view class="play_count">{{play_count}}场</view>
+    </view>
+    <view class="win">
+      <view class="win_text">胜率</view>
+      <view class="win_rate">{{win_rate}}%</view>
+    </view>
+    <navigator open-type="navigate" url="/pages/mine/changeinfo/changeinfo">
+      <view class="user_space">
+        <view>修改资料</view>
+        <image src="/imgs/arrow.png"></image>
+      </view>
+    </navigator>
+  </view>
+  <!-- 问题反馈 -->
+  <view class="question">
+    <view class="question_text">问题反馈</view>
+    <image src="/imgs/question.png" class="question_png"></image>
+    <image src="/imgs/arrow.png" class="question_arrow"></image>
+  </view>
+  <!-- 关于我们 -->
+  <view class="about_us">
+    <view class="us_text">关于我们</view>
+    <image src="/imgs/us.png" class="us_png"></image>
+    <image src="/imgs/arrow.png" class="us_arrow"></image>
+  </view>
+</view>

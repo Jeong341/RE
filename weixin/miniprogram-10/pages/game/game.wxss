@@ -1,0 +1,89 @@
+.body{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    text-align: center;
+    background-color: #abfcfe;
+}
+.chess{
+    width: 55vw;
+    height: 110vw;
+}
+.chess1{
+    margin: 0px;
+}
+.chess2{
+    margin-top: 10vw;
+} 
+.tozi{
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    border: 2px solid red;
+    border-radius: 50px;
+    padding: 5px;
+    box-sizing: border-box;
+    padding-left: 8px;
+}
+.cir1{
+    bottom: 5vh;
+    right: 50vw-25px;
+}
+.cir2{
+    top:5vh;
+    left:50vw-25px;
+    border: 2px solid green;
+}
+.return_bnt{
+    position: absolute;
+    width: 30px; 
+    height: 35px;
+    top: 6vh;
+    left: 3vw;
+}
+.ddown{
+  position: absolute;
+  background-color: #ffffff;
+  opacity: 0.5;
+  height: 50px;
+  border-radius: 15px;
+}
+.sub1{
+    bottom: 5vh;
+    right: 15vw;
+}
+.sub2{
+  top: 8vh;
+  left: 15vw;
+}
+.reminder{
+  position: absolute;
+  width: 300px;
+  height: 150px;
+  background-color:#ca4e20;
+  font-size: 20px;
+  border: 10px solid yellow ;
+  border-radius: 15px;
+  box-sizing: border-box;
+  padding: 0px;
+  margin: 0px;
+}
+/* 骰子部分CSS */
+.square{
+  width: 90px;
+  height: 90px;
+  border: none;
+  display: flex;
+  align-items: center;
+  box-sizing: border-box;
+}
+.point{
+  width: 90%;
+  height: 90%;
+}
+.alert{
+  position:absolute;
+}

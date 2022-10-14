@@ -1,0 +1,12 @@
+<!--components/test/test.wxml-->
+<view class="chessboard">
+    <button class="grid" style="width: 15vw;" data-id="0" bindtap="add_point">{{point_arry[0]}}</button>
+    <button class="grid" style="width: 15vw;" data-id="1" bindtap="add_point">{{point_arry[1]}}</button>
+    <button class="grid" style="width: 15vw;" data-id="2" bindtap="add_point">{{point_arry[2]}}</button>
+    <button class="grid" style="width: 15vw;" data-id="3" bindtap="add_point">{{point_arry[3]}}</button>
+    <button class="grid" style="width: 15vw;" data-id="4" bindtap="add_point">{{point_arry[4]}}</button>
+    <button class="grid" style="width: 15vw;" data-id="5" bindtap="add_point">{{point_arry[5]}}</button>
+    <button class="grid" style="width: 15vw;" data-id="6" bindtap="add_point">{{point_arry[6]}}</button>
+    <button class="grid" style="width: 15vw;" data-id="7" bindtap="add_point">{{point_arry[7]}}</button>
+    <button class="grid" style="width: 15vw;" data-id="8" bindtap="add_point">{{point_arry[8]}}</button>
+</view>

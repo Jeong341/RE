@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "chessboard":"../../components/my_view/my_view"
+  },
+  "enablePullDownRefresh": true
+}

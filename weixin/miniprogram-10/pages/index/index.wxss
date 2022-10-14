@@ -1,0 +1,420 @@
+@font-face {
+  font-family: "站酷高端黑 Regular";font-weight: 400;src: url("//at.alicdn.com/wf/webfont/owJ354tK7ir7/LcrJE1HjYi3c2MLl93CvN.woff2") format("woff2"),
+  url("//at.alicdn.com/wf/webfont/owJ354tK7ir7/iX0Hqj_iv01UdV2P_6TEf.woff") format("woff");
+  font-display: swap;
+}
+/* 全局背景设置，大小自适应屏幕 */
+.inital{
+    overflow: hidden;
+    background-color: #abfcfe   ;
+    width:100vw;
+    height: 100vh;
+    box-sizing: border-box;
+    padding: 25vh 0 0 0;
+    margin: 0; 
+}
+/* 开局选择界面 */
+.chosen_area button{
+    background-color: #ffed1a;
+    color:#ca4e20;
+    margin-top: 32px;
+    padding: 0;
+    height: 58px;
+    line-height: 58px;
+    font-size: 25px;
+    border-radius: 50px;
+    z-index: 2;
+}
+/* 标题 */
+.title_1{
+  position: absolute;
+  top: 192rpx;
+  left: 92rpx;
+  font-family: 站酷高端黑 Regular;
+  font-size: 180rpx;
+}
+/* 模式选择 */
+view.mode_chosen{
+    /* 绝对定位 */
+    position: absolute;
+    top: 30vh;
+    left: 15vw;
+    width: 70vw;
+    height: 50vh;
+}
+/* 返回主界面图片按钮 */
+image.mode_chosen{
+    position: absolute;
+    width: 100rpx;
+    height: 100rpx;
+    top: 23vh;
+    right:8vw ;
+}
+/* 模式选择盒子 */
+.mode_chosen view{
+    width: 70vw;
+    height:85px;
+    margin-bottom: 3px;
+    border-radius:20px;
+    background-color:#ffed1a;
+}
+/* 模式选择按钮 */
+.mode_chosen button{
+    background:linear-gradient(200deg,#e3c5eb,#ffed1a);
+    color:#ca4e20;
+    font-size: 30px;
+    padding: 0;
+    height: 80px;
+    line-height:80px;
+    box-sizing: border-box;
+}
+/* 排行榜 */
+.ranking_show{
+    position:absolute;
+    top: 25vh;
+    left: 15vw;
+    text-align: center;
+    width: 70vw;
+    height: 60vh;
+    background-color: #fff;
+    border:1px solid #fff ;
+}
+/* 排行榜文字标题 */
+.ranking_show .title{
+    background-color: #ffed1a;
+    height: 65px;
+}
+.ranking_show .title text{
+    line-height: 65px;
+    font-size: 30px;
+    font-weight:600;
+    color: #ca4e20;
+    z-index: 1;
+}
+/* 排行榜退出图片（叉号） */
+.ranking_show image{
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    top:-10px;
+    right:-10px;
+}
+/* 游戏设置 */
+.set_show{
+    position:absolute;
+    top: 25vh;
+    left: 15vw;
+    text-align: center;
+    width: 70vw;
+    height: 60vh;
+    background-color: #fff;
+    border:1px solid #fff ;
+}
+.shezhi{
+  background-color: #ca4e20;
+  height: 140rpx;
+}
+.she
+{
+  display: inline-block;
+  font-size: 80rpx;
+  margin-top: 10rpx;
+  margin-right: 80rpx;
+  color: #ffed1a;
+}
+.zhi{
+  display: inline-block;
+  font-size: 80rpx;
+  color: #ffed1a;
+}
+.back{
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    top:-10px;
+    right:-10px;
+}
+.voice{
+    position: absolute;
+    width: 80rpx;
+    height: 80rpx;
+    top: 200rpx;
+    left: 50rpx;
+    
+}
+.back_voice{
+  position: absolute;
+  font-size: large;
+  font-weight: 700;
+  top: 280rpx;
+  left: 22rpx;
+}
+.turn{
+  position: absolute;
+  width: 60rpx;
+  height: 60rpx;
+  top: 210rpx;
+  right: 120rpx;
+}
+.turn_font{
+  position: absolute;
+  font-size: large;
+  font-weight: 700;
+  top: 270rpx;
+  right:134rpx ;
+}
+.yuyan{
+position: absolute;
+width: 80rpx;
+height: 80rpx;
+left: 50rpx;
+top: 420rpx;
+}
+.set_show picker{
+  position: absolute;
+  top: 448rpx;
+  right: 20rpx;
+  width: 300rpx;
+  height: 60rpx;
+  border: 2px solid red;
+  border-radius: 20px;
+}
+.picker{
+  font-size: large;
+  font-weight: 700;
+  margin-top: 3rpx;
+}
+.langue{
+  position: absolute;
+  font-size: large;
+  font-weight: 700;
+  top: 488rpx;
+  left: 50rpx;
+}
+.gift{
+position: absolute;
+width: 80rpx;
+height: 80rpx;
+top: 660rpx;
+left: 50rpx;
+}
+.set_show input{
+  position: absolute;
+  top: 700rpx;
+  left: 200rpx;
+  width: 300rpx;
+  height: 60rpx;
+  border: 2px solid red;
+  border-radius: 20px;
+}
+.duihuan{
+  position: absolute;
+  font-size: large;
+  font-weight: 700;
+  top: 740rpx;
+  left: 40rpx;
+}
+.duihuan_button{
+  position: absolute;
+  top: 790rpx;
+  right: 128rpx;
+  border-radius: 20px;
+}
+.set_eggs view{
+  position: absolute;
+  top: 850rpx;
+  right: 230rpx;
+  font-size: large;
+  font-weight: 700;
+}
+.why_pgn{
+  position: absolute;
+  top: 500rpx;
+  right:200rpx ;
+  width: 300rpx;
+  height: 300rpx;
+}
+.why_back{
+  position: absolute;
+  right: 150rpx;
+  top: 450rpx;
+  width: 60rpx;
+  height: 60rpx;
+}
+.sup_text{
+  position: absolute;
+  top: 600rpx;
+  right: 160rpx;
+  font-size: 150rpx;
+  font-weight: 700;
+}
+.sup_button{
+  position: absolute;
+  top: 800rpx;
+  left: 300rpx;
+}
+/* 规则*/
+.rule_show{
+    position:absolute;
+    top: 25vh;
+    left: 10vw;
+    width: 80vw;
+    height: 60vh;
+    border: 10px solid #84fcd8;
+    border-radius: 8px;
+    box-sizing: border-box;
+    background-color: #fff;
+}
+.rule_back{
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    right:5px
+}
+.title_2{
+  position: absolute;
+  top: 10rpx;
+  left: 120rpx;
+  font-family: 站酷高端黑 Regular;
+  font-size: 80rpx;
+  font-weight: 700;
+  color: #ca4e20;
+}
+.text_1{
+  position: absolute;
+  top: 120rpx;
+  right: 30rpx;
+  width: 500rpx;
+  font-size: 35rpx;
+  text-align: left;
+  font-weight: 700;
+}
+.text_2{
+  position: absolute;
+  top: 300rpx;
+  right: 30rpx;
+  width: 500rpx;
+  font-size: 35rpx;
+  text-align: left;
+  font-weight: 700;
+}
+.text_3{
+  position: absolute;
+  top: 490rpx;
+  right: 30rpx;
+  width: 500rpx;
+  font-size: 35rpx;
+  text-align: left;
+  font-weight: 700;
+}
+/* 方块动动画 */
+.square_ul{
+    /* 铺满全屏 */
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+/* 给每一个view组件加上动画 */
+.square_ul view{
+    position: absolute;
+    bottom: -15vh;
+    left: 10vw;
+    width:40px; 
+    height: 40px;
+    /* 默认透明度0.8 */
+    opacity: 0.8;
+    /* 背景白色透明 */
+    background-color: rgba(255, 255, 255, 0);
+    animation: squares  infinite;
+    animation-duration: 15s;    
+}
+/* 图片大小为组件view大小 */
+.square_ul view image{
+    width: 100%;
+    height: 100%;
+    opacity: 0.7;
+}    
+/* 设置各个view的大小和动画时间延时 */
+.square_ul view:nth-child(1){
+    position: absolute;
+    left: 30vw;
+    width: 60px;
+    height: 60px;
+    opacity: 0.5;
+    animation-duration: 20s;
+    animation-delay: 3s;
+}
+.square_ul view:nth-child(2){
+    position: absolute;
+    left: 50vw;
+    width: 80px;
+    height: 80px;
+    opacity: 0.5;
+    animation-duration: 18s;
+    animation-delay: 6s;
+}
+.square_ul view:nth-child(3){
+    position: absolute;
+    left: 50vw;
+    width: 80px;
+    height: 80px;
+    opacity: 0.4;
+    animation-duration: 18s;
+    animation-delay: 0s;
+}
+.square_ul view:nth-child(4){
+    position: absolute;
+    left: 90vw;
+    width: 80px;
+    height: 80px;
+    opacity: 0.3;
+    animation-duration: 19s;
+    animation-delay: 4s;
+}
+.square_ul view:nth-child(5){
+    position: absolute;
+    left: 75vw;
+    width: 80px;
+    height: 80px;
+    opacity: 0.3;
+    animation-duration: 20s;
+    animation-delay: 1s;
+}
+.square_ul view:nth-child(6){
+    position: absolute;
+    left: 5vw;
+    width: 90px;
+    height: 90px;
+    opacity: 0.3;
+    animation-duration: 20s;
+    animation-delay: 3s;
+}
+.square_ul view:nth-child(7){
+    position: absolute;
+    left: 60vw;
+    width: 50px;
+    height: 50px;
+    opacity: 0.3;
+    animation-duration: 15s;
+    animation-delay: 7s;
+}
+.square_ul view:nth-child(8){
+    position: absolute;
+    left: 40vw;
+    width: 50px;
+    height: 50px;
+    opacity: 0.3;
+    animation-duration: 18s;
+    animation-delay: 8s;
+}
+@keyframes squares{
+    0%{
+        transform:translateY(0) ;
+    }
+    100%{
+        transform: translateY(-120vh) rotate(360deg);
+    }
+}

@@ -1,0 +1,34 @@
+<view class="body">
+<image src="../../imgs/ly.jpg" style="position:absolute;width:100%;height:100%;"></image>
+<!--  棋盘 -->
+<view class="chess">
+<chessboard class="chess2"> </chessboard>
+<chessboard class="chess1"> </chessboard>
+</view>
+<!-- 骰子生成器 -->
+<button class="tozi cir1" bindtap="getnum1" style="width:100px;background-color:#024e88;" disabled="{{dis1}}" >
+    <!-- {{pointnum1}} -->
+      <view class="square" bindtap="flip" bindtap="getnum1">
+    <image src="{{baseurl1}}" class="point"  ></image>
+      </view>
+</button>
+<button class="tozi cir2"  style="width:100px;color:black !important;background-color:#024e88;" disabled="true">
+  <view class="square" bindtap="flip" bindtap="getnum2">
+    <image src="{{baseurl2}}" class="point"  ></image>
+  </view>
+    <!-- {{pointnum2}} -->
+</button>
+<button class="ddown sub1" style="width:30px">
+</button>
+<!-- 返回上一页的按钮 -->
+<navigator open-type="switchTab" class="return_bnt" url="../index/index">
+    <image src="../../imgs/home-icon.png" style="width: 100%;height:100%;"/>
+ </navigator>
+ 
+ <!-- <view class="reminder" hidden="{{over_flg}}" bindtap="lookchess"> -->
+<!-- <text>
+红方点数:{{total1}} 绿方点数:{{total2}}
+{{people}}方获胜!!！
+</text> -->
+<!-- </view> -->
+</view>

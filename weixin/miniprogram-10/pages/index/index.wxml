@@ -1,0 +1,102 @@
+<!--pages/index/index.wxml-->
+<view id="body">
+<image src="../../imgs/ly.jpg" style="position:absolute;width:100%;height:100%;"></image>
+<view class="title_1">大魔骰</view>
+<view class="inital" style="opacity:{{opvalue}};">
+    <view class="chosen_area">
+        <button class="begin" bindtap="show_mode" >开始游戏</button>
+        <button class="ranking" bindtap="show_ranking">排行榜</button>
+        <button class="gameset" bindtap="show_gameset">游戏设置</button>
+        <button class="rule" bindtap="show_rule">游戏规则</button>
+    </view>
+    <view class="square_ul">
+        <view>
+            <image src="/imgs/tozi.png"></image>
+        </view>
+        <view>
+            <image src="/imgs/tozi.png"></image>
+        </view>
+        <view>
+            <image src="/imgs/tozi.png"></image>
+        </view>
+        <view>
+            <image src="/imgs/tozi.png"></image>
+        </view>
+        <view>
+            <image src="/imgs/tozi.png"></image>
+        </view>
+        <view>
+            <image src="/imgs/tozi.png"></image>
+        </view>
+        <view>
+            <image src="/imgs/tozi.png"></image>
+        </view>
+        <view>
+            <image src="/imgs/tozi.png"></image>
+        </view>
+    </view>
+</view>    
+    <!-- 模式选择，当点击开始游戏时不再隐藏 -->
+    <view hidden="{{flg_begin}}" class="mode_chosen">
+     <navigator url="../game2/game2"><button style="width: 70vw;">人机模式</button></navigator>
+    <navigator url="../intoroom/intoroom"><button style="width: 70vw;">房间模式</button></navigator>
+    <navigator url="../game/game"><button style="width: 70vw;">本地游戏</button></navigator> 
+    </view>
+    <image src="/imgs/return_icon.png" class="mode_chosen" bindtap="return_chosen" hidden="{{flg_begin}}"></image>
+    <!-- 排行榜 -->
+    <!-- 需要从后端获取排行积分等数据 -->
+    <view class="ranking_show" hidden="{{flg_ranking}}">
+        <image src="/imgs/xx_icon.png"  bindtap="return_chosen" hidde="{flg_ranking}"></image>   
+        <view class="title">
+            <text>排行榜</text> 
+        </view>
+    </view>
+    <!-- 游戏设置 -->
+    <view class="set_show" hidden="{{flg_set}}" >
+    <image src="/imgs/xx_icon.png" class="back" bindtap="return_chosen" hidde="{flg_set}"></image>
+    <view class="shezhi">
+    <view class="she">设</view>
+    <view class="zhi">置</view>
+    </view>
+    <image src="/imgs/yl.png" class="voice"></image>
+    <view class="back_voice">背景音乐</view>
+    <block wx:if="{{flg_turn}}">
+      <image src="/imgs/kai.png" class="turn" bindtap="Turn_off"></image>
+      <view class="turn_font">开</view>
+    </block>
+    <block wx:else>
+    <image src="/imgs/guan.png" class="turn" bindtap="Turn_on"></image>
+    <view class="turn_font">关</view>
+    </block>
+    <image src="/imgs/yyqh.png" class="yuyan"></image>
+    <view class="langue">语言</view>
+    <picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}">
+    <view class="picker">{{array[index]}}</view>
+    </picker>
+    <image src="/imgs/dhm.png" class="gift"></image>
+    <input type="text" value="{{gift}}" placeholder="请输入兑换码" maxlength="8" bindinput="input_gift" data-name="gift"/>
+    <button class="duihuan_button" type="warn" size="mini" plain="true" bindtap="eggs">兑换</button>
+    <view class="duihuan">兑换码</view>
+    </view>
+    <!-- 彩蛋 -->
+    <view hidden="{{flg_sup}}">
+      <view class="sup_text">猜对啦</view>
+      <button size="mini" type="warn" class="sup_button" bindtap="show_gameset">返回</button>
+    </view>
+    <view class="set_eggs" hidden="{{flg_eggs}}">
+      <image src="/imgs/icon_w.png" class="why_pgn"></image>
+      <view>你在干什么？</view>
+      <image src="/imgs/xx_icon.png" bindtap="show_gameset" class="why_back"></image>
+    </view>
+    <!-- 游戏规则 -->
+    <view class="rule_show" hidden="{{flg_rule}}">
+            <image src="/imgs/xx_icon.png"  bindtap="return_chosen" hidde="{flg_rule}" class="rule_back"></image>     
+        <view style="width: 100%; height: 100%; background-color: khaki;text-align: center;">
+        <br/>
+           <text class="title_2" >游戏规则</text>
+          <text class="text_1" space="emsp"> 棋盘为九宫格样式,分成三条线;两名玩家轮流投掷骰子,并可将结果选择己区九宫格中三条线中一条线进行摆放;</text>
+          <text class="text_2" space="emsp"> 在己方某条线置骰后,若对方该条线有相同点数骰子存在,则触发开心逍逍乐,对方该线同点数骰子被消除;</text>
+          <text class="text_3" space="emsp"> 当某方九宫格满时,游戏结束进入结算阶段,玩家总得分为三条线得分之和,单条线分数结算规则为各点数乘以此点数出现次数的平方之和,最后总得分高的玩家获胜;管你看没看懂,玩就完事了!</text>
+        </view>
+    </view>
+</view>

@@ -1,0 +1,26 @@
+<!--pages/mine/changeinfo/changeinfo.wxml-->
+<view class="body">
+<view class="s_title">信息</view>
+<!-- 标题 -->
+<view class="title">
+  <view class="line"></view>
+  <view class="title_text">修改资料</view>
+  <navigator open-type="navigateBack">
+    <image src="/imgs/back_arrow.png" class="back"></image>
+  </navigator>
+</view>
+<!-- 更改资料 -->
+<view class="Nickname">
+<view>昵称</view>
+<input  class="weui-input"  placeholder="请输入昵称" bindinput="input_name"/>
+</view>
+<view class="Sex">
+<view class="Sex_view">性别</view>
+<picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}">
+  <view class="picker">{{array[index]}}</view>
+</picker>
+</view>
+<navigator open-type="navigateBack">
+<button type="warn" size="mini" bindtap="changeinfo">完成</button>
+</navigator>
+</view>
